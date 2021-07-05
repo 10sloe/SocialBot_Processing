@@ -5,22 +5,30 @@ class Nachricht
     String stimmung; 
     String grund;
 
-    //Konstruktor
+    //Konstruktor mit Name, Stimmung und Grund
     Nachricht(String name_, String stimmung_, String grund_)
     {
         name = name_;
         stimmung = stimmung_;
         grund = grund_;
     }
+    
+    // Konstruktor aus einem JSON-Objekt
+    Nachricht(JSONObject json)
+    {
+        name = json.getString("name");
+        stimmung = json.getString("stimmung");
+        grund = json.getString("grund");
+    }
 
     // Methoden
-    // Ausgabe auf der Konsole
     void ausgeben()
     {
-        System.out.println("****** Nachricht *****");
-        System.out.println("Name: " + name);
-        System.out.println("Stimmung: " + stimmung);
-        System.out.println("Grund: " + grund);
+        println("****** Nachricht *****");
+        println("Name: " + name);
+        println("Stimmung: " + stimmung);
+        println("Grund: " + grund);
+        println();
     }
 
     // Wandelt die Nachricht in einen JSON-String um
@@ -38,5 +46,7 @@ class Nachricht
 
         return erg;
     }
+    
+    
 
 }

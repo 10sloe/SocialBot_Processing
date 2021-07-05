@@ -1,3 +1,5 @@
+import http.requests.*;
+
 class User
 {
   // Attribute
@@ -14,25 +16,15 @@ class User
   public void nachrichtSenden(String stimmung, String grund)
   {
     Nachricht nachricht = new Nachricht(name, stimmung, grund);
-    String erg =  net.post(nachricht); 
-    println("Meldung: " + erg);
+    PostRequest post = new PostRequest(API_URL);
+    post.addHeader("Content-Type", "application/json");
+    post.addData(nachricht.toJson());
+    post.send();
+    
+    System.out.println(post.getContent());
     println();
   }
 
-  public void alleNachrichten()
-  {
-    Nachricht[] nachrichten = net.nachrichtenAbrufen();
-    if (nachrichten.length == 0)
-    {
-      println("Keine Nachricht auf dem Server!");
-    } else
-    {
-      println("-----Alle Nachrichten: ---- ");
-      for (int i = 0; i < nachrichten.length; i++)
-      {
-        nachrichten[i].ausgeben();
-        System.out.println();
-      }
-    }
-  }
+  
+  
 }
