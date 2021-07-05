@@ -1,5 +1,3 @@
-import http.requests.*;
-
 class User
 {
   // Attribute
