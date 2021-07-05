@@ -9,7 +9,6 @@ void setup()
 
 public void alleNachrichten()
   {
-    // Nachrichten als vom Server holen
     GetRequest get = new GetRequest(API_URL);
     get.send();
     String erg = get.getContent();
