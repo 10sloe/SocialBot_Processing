@@ -3,7 +3,6 @@ import http.requests.*;
 class User
 {
   // Attribute
-  // Name des Benutzers
   String name; 
 
   // Konstruktor
